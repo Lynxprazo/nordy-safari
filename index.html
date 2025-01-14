@@ -19,7 +19,7 @@
               border-radius: 5px;
             }
           
-            #textContainer {
+            .textContainer {
               position: fixed;
               z-index:100;
               margin-top: 20px;
@@ -32,12 +32,14 @@
               visibility: hidden; /* Initially hidden */
               transition: opacity 0.5s ease, visibility 0s 0.5s; /* Smooth fade-in/out effect */
             }
+         
           
-            #textContainer.show {
+            .textContainer.show {
               opacity: 1; /* Fully visible */
               visibility: visible; /* Make it visible */
               transition: opacity 0.5s ease, visibility 0s; /* Smooth fade-in effect */
             }
+       
           
             /* Media query for smaller screens */
             @media (max-width: 768px) {
@@ -52,9 +54,10 @@
                 font-size: 14px;
               }
           
-              #textContainer p {
+              .textContainer p {
                 font-size: 14px;
               }
+          
             }
           
             /* Media query for very small screens */
@@ -64,9 +67,11 @@
                 font-size: 12px;
               }
           
-              #textContainer p {
+              .textContainer p {
                 font-size: 12px;
               }
+          
+              
             }
           </style>
           
@@ -142,17 +147,31 @@ https://templatemo.com/tm-526-vanilla
                 <button class="custom-button" id="Aboutus">
                     About us
                 </button>
-                <button class="custom-button">
+                <button class="custom-button" id="Mission">
                     Mission
                 </button>
-                <button class="custom-button">
+                <button class="custom-button" id="Vision">
                   Vision 
                 </button>
             </div>
-            <div id="textContainer">
-                <p>Zanzibar Nordy Safari was foundeed in 2022 with a desire to showcase Zanzibar 's beautiful beauty and rich cultureal history . Our experienced local specialists are committed to offering ouutstanding safari experiences that combine adventure , luxury, and a strong respect for the natural environment.<br>
+            <div id="textContainer1" class="textContainer">
+                <p>About Us <br> Zanzibar Nordy Safari was foundeed in 2022 with a desire to showcase Zanzibar 's beautiful beauty and rich cultureal history . Our experienced local specialists are committed to offering ouutstanding safari experiences that combine adventure , luxury, and a strong respect for the natural environment.<br>
 
                   Our programs appeal to a wide range of interests and tastes, from relaxing beach vacations and cultural trips to adrenaline-fueled animal safaris and maritime adventures. We take pleasure in our presonalized approach, which ensure that each client has a unique and memorable experience suited to their preferences.
+                </p>
+            </div>
+            <div id="textContainer2" class="textContainer">
+                <p>Vision <br>
+                  Becoming the leading supplier of exceptional safari experience in Zanzibar means combining luxury and  adventure while showcasing  the island's rich cultureal heritage and stunning  natural surrounding  to a global audience
+                </p>
+            </div>
+            <div id="textContainer3" class="textContainer">
+                <p>Mission <br>
+                  To deliver exceptional,presonalized safari experiences that exceed our clients expectations <br>
+                  To promote sustainable and responsible tourism  that preserves the natural and cultural heritage of Zanzibar<br>
+                  To empower and support local communities by creating job opportunities and investing in local project <br>
+                  To continuously innovate and improve our service to provide the highest standards of safety, comfort , and enjoyment for our guests 
+                  
                 </p>
             </div>
             <script>
@@ -160,21 +179,23 @@ https://templatemo.com/tm-526-vanilla
                 const aboutUsButton = document.getElementById('Aboutus');
                 const missionButton = document.getElementById('Mission');
                 const visionButton = document.getElementById('Vision');
-                const textContainer = document.getElementById('textContainer');
+                const textContainer1 = document.getElementById('textContainer1');
+                const textContainer2 = document.getElementById('textContainer2');
+                const textContainer3 = document.getElementById('textContainer3');
               
                 // Add event listener to the "About us" button to toggle visibility of the text container
                 aboutUsButton.addEventListener('click', function() {
-                  textContainer.classList.toggle('show'); // Toggle the 'show' class to control visibility
+                  textContainer1.classList.toggle('show'); // Toggle the 'show' class to control visibility
                 });
               
                 // Add event listener to the "Our Mission" button to toggle visibility of the text container
                 missionButton.addEventListener('click', function() {
-                  textContainer.classList.toggle('show'); // Toggle the 'show' class to control visibility
+                  textContainer3.classList.toggle('show'); // Toggle the 'show' class to control visibility
                 });
               
                 // Add event listener to the "Our Vision" button to toggle visibility of the text container
                 visionButton.addEventListener('click', function() {
-                  textContainer.classList.toggle('show'); // Toggle the 'show' class to control visibility
+                  textContainer2.classList.toggle('show'); // Toggle the 'show' class to control visibility
                 });
               </script>
             <div class="first-content">
@@ -398,6 +419,11 @@ https://templatemo.com/tm-526-vanilla
                                     </div>
                                     <div class="col-md-12">
                                       <fieldset>
+                                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Email subject..." required="">
+                                      </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                      <fieldset>
                                         <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
                                       </fieldset>
                                     </div>
@@ -408,6 +434,7 @@ https://templatemo.com/tm-526-vanilla
                                     </div>
                                 </div>
                             </form>
+                      
                         </div>
                     </div>
                 </div>
@@ -481,9 +508,28 @@ https://templatemo.com/tm-526-vanilla
     
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
     <script src="js/vendor/bootstrap.min.js"></script>
+    <script type="module" src="sender.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
     <script>
+
+      // script to handle form 
+      import { sender } from "../sender";
+
+
+const formSubmit = document.getElementById('form-submit')
+document.getElementById('contact').addEventListener("submit", function(event){
+  event.preventDefault()
+const Name = document.getElementById('name').value
+const subject = document.getElementById('subject').value
+const email = document.getElementById('email').value
+const message = document.getElementById('message')
+
+const headers = `From: ${email}`;
+const apikey = ProcessingInstruction.env.VITE_RELAY_API_KEY;
+ sender(email,Name,subject,message,headers,apikey )
+})
+
         function openCity(cityName) {
             var i;
             var x = document.getElementsByClassName("city");
