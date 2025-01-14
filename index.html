@@ -1,550 +1,783 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            /* Default styling */
-            .buttons {
-              display: flex;
-              justify-content: space-around;
-              margin-top: 20px;
-            }
-          
-            .custom-button {
-              padding: 10px 20px;
-              font-size: 16px;
-              background-color: #4CAF50;
-              color: white;
-              border: none;
-              cursor: pointer;
-              border-radius: 5px;
-            }
-          
-            .textContainer {
-              position: fixed;
-              z-index:100;
-              margin-top: 20px;
-              width: 50%;
-              background-color: rgba(0, 0, 0, 0.5);
-              color: white;
-              padding: 20px;
-              border-radius: 5px;
-              opacity: 0; /* Initially hidden */
-              visibility: hidden; /* Initially hidden */
-              transition: opacity 0.5s ease, visibility 0s 0.5s; /* Smooth fade-in/out effect */
-            }
-         
-          
-            .textContainer.show {
-              opacity: 1; /* Fully visible */
-              visibility: visible; /* Make it visible */
-              transition: opacity 0.5s ease, visibility 0s; /* Smooth fade-in effect */
-            }
-       
-          
-            /* Media query for smaller screens */
-            @media (max-width: 768px) {
-              .buttons {
-                flex-direction: column;
-                align-items: center;
-              }
-          
-              .custom-button {
-                width: 80%;
-                margin-bottom: 10px;
-                font-size: 14px;
-              }
-          
-              .textContainer p {
-                font-size: 14px;
-              }
-          
-            }
-          
-            /* Media query for very small screens */
-            @media (max-width: 480px) {
-              .custom-button {
-                width: 90%;
-                font-size: 12px;
-              }
-          
-              .textContainer p {
-                font-size: 12px;
-              }
-          
-              
-            }
-          </style>
-          
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Zanzibar Nordy Safari</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <head>
+    <style>
+      /* Default styling */
+      .buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+      }
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/fontAwesome.css">
-        <link rel="stylesheet" href="css/hero-slider.css">
-        <link rel="stylesheet" href="css/templatemo-main.css">
-        <link rel="stylesheet" href="css/owl-carousel.css">
+      .custom-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
 
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+      .textContainer {
+        position: fixed;
+        z-index: 100;
+        margin-top: 20px;
+        width: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 20px;
+        border-radius: 5px;
+        opacity: 0; /* Initially hidden */
+        visibility: hidden; /* Initially hidden */
+        transition: opacity 0.5s ease, visibility 0s 0.5s; /* Smooth fade-in/out effect */
+      }
 
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    </head>
-<!--
+      .textContainer.show {
+        opacity: 1; /* Fully visible */
+        visibility: visible; /* Make it visible */
+        transition: opacity 0.5s ease, visibility 0s; /* Smooth fade-in effect */
+      }
+
+      /* Media query for smaller screens */
+      @media (max-width: 768px) {
+        .buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .custom-button {
+          width: 80%;
+          margin-bottom: 10px;
+          font-size: 14px;
+        }
+
+        .textContainer p {
+          font-size: 14px;
+        }
+      }
+
+      /* Media query for very small screens */
+      @media (max-width: 480px) {
+        .custom-button {
+          width: 90%;
+          font-size: 12px;
+        }
+
+        .textContainer p {
+          font-size: 12px;
+        }
+      }
+    </style>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Zanzibar Nordy Safari</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/fontAwesome.css" />
+    <link rel="stylesheet" href="css/hero-slider.css" />
+    <link rel="stylesheet" href="css/templatemo-main.css" />
+    <link rel="stylesheet" href="css/owl-carousel.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"
+      rel="stylesheet"
+    />
+
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+  </head>
+  <!--
 Vanilla Template
 https://templatemo.com/tm-526-vanilla
 -->
-<body>
-
+  <body>
     <div class="fixed-side-navbar">
-        <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link" href="#home"><span>Intro</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#services"><span>Services</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#portfolio"><span>Portfolio</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#our-story"><span>Our Story</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact-us"><span>Contact Us</span></a></li>
-            <div class="card">
-                <div class="background"></div>
-                <div class="logo">
-                  <!-- Replacing SVG with ZS -->
-                  <span class="logo-text">ZS</span>
-                </div>
-                <div class="box box1">
-                  <a href="https://www.instagram.com/zanzibarnordysafari
-                  " target="_blank" class="icon">
-                    <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" class="svg">
-                      <path d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z"></path>
-                    </svg>
-                  </a>
-                </div>
-                <div class="box box2">
-                  <a href="mailto:Zanzibarnordy@gmail.com" target="_blank" class="icon">
-                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="svg">
-                      <path d="M502.3 190.8L327.4 338.2c-18.9 15.8-46.9 15.8-65.8 0L9.7 190.8C3.9 186.4 0 179.7 0 172.5V96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v76.5c0 7.2-3.9 13.9-9.7 18.3zM480 160L256 320 32 160V96c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32v64zm0 192c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V224l192 160c24.3 20.3 59.7 20.3 84 0l192-160v128z"></path>
-                    </svg>
-                  </a>
-                </div>
-                <div class="box box3">
-                  <a href="https://wa.me/+255768559025 " target="_blank" class="icon">
-                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" class="svg">
-                      <path d="M380.9 97.1C339.3 55.5 285.6 32 228.9 32c-74.8 0-144.5 40.4-183.1 105.3C15.7 176.3 4.4 207.5.9 239.8c-3.5 32.3 1.6 64.6 15.1 94L0 480l147.7-37.7c28.8 12.4 59.3 18.9 90.2 18.9 73.6 0 141.5-35.4 184.6-94.9 43.2-59.6 55.3-135.4 32.5-206.1-10.6-33.2-30.2-63.5-57.7-91zM228.9 432c-27.3 0-54.1-6.4-78.3-18.6l-8.4-4.2-87.7 22.4 23.5-85.2-4.4-8.6c-12.5-24.6-17.5-52.4-14.2-80.2 3.2-27.8 13.2-54.3 29.4-77.2 35.8-51.1 95.1-82.2 159.1-82.2 47.4 0 92.5 18.4 126.3 52.1 33.8 33.7 52.3 78.5 52.3 125.9 0 105.8-86.1 192-192.1 192z"></path>
-                    </svg>
-                  </a>
-                </div>
-                <div class="box box4"></div>
-              </div>
-              
-              
-        </ul>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#home"><span>Intro</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services"><span>Services</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#portfolio"><span>Portfolio</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#our-story"><span>Our Story</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact-us"><span>Contact Us</span></a>
+        </li>
+        <div class="card">
+          <div class="background"></div>
+          <div class="logo">
+            <!-- Replacing SVG with ZS -->
+            <span class="logo-text">ZS</span>
+          </div>
+          <div class="box box1">
+            <a
+              href="https://www.instagram.com/zanzibarnordysafari
+                  "
+              target="_blank"
+              class="icon"
+            >
+              <svg
+                viewBox="0 0 30 30"
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg"
+              >
+                <path
+                  d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="box box2">
+            <a
+              href="mailto:Zanzibarnordy@gmail.com"
+              target="_blank"
+              class="icon"
+            >
+              <svg
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg"
+              >
+                <path
+                  d="M502.3 190.8L327.4 338.2c-18.9 15.8-46.9 15.8-65.8 0L9.7 190.8C3.9 186.4 0 179.7 0 172.5V96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v76.5c0 7.2-3.9 13.9-9.7 18.3zM480 160L256 320 32 160V96c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32v64zm0 192c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V224l192 160c24.3 20.3 59.7 20.3 84 0l192-160v128z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="box box3">
+            <a href="https://wa.me/+255768559025 " target="_blank" class="icon">
+              <svg
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg"
+              >
+                <path
+                  d="M380.9 97.1C339.3 55.5 285.6 32 228.9 32c-74.8 0-144.5 40.4-183.1 105.3C15.7 176.3 4.4 207.5.9 239.8c-3.5 32.3 1.6 64.6 15.1 94L0 480l147.7-37.7c28.8 12.4 59.3 18.9 90.2 18.9 73.6 0 141.5-35.4 184.6-94.9 43.2-59.6 55.3-135.4 32.5-206.1-10.6-33.2-30.2-63.5-57.7-91zM228.9 432c-27.3 0-54.1-6.4-78.3-18.6l-8.4-4.2-87.7 22.4 23.5-85.2-4.4-8.6c-12.5-24.6-17.5-52.4-14.2-80.2 3.2-27.8 13.2-54.3 29.4-77.2 35.8-51.1 95.1-82.2 159.1-82.2 47.4 0 92.5 18.4 126.3 52.1 33.8 33.7 52.3 78.5 52.3 125.9 0 105.8-86.1 192-192.1 192z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="box box4"></div>
+        </div>
+      </ul>
     </div>
 
     <div class="parallax-content baner-content" id="home">
-        <div class="container">
-            <div class = "buttons">
-
-                <button class="custom-button" id="Aboutus">
-                    About us
-                </button>
-                <button class="custom-button" id="Mission">
-                    Mission
-                </button>
-                <button class="custom-button" id="Vision">
-                  Vision 
-                </button>
-            </div>
-            <div id="textContainer1" class="textContainer">
-                <p>About Us <br> Zanzibar Nordy Safari was foundeed in 2022 with a desire to showcase Zanzibar 's beautiful beauty and rich cultureal history . Our experienced local specialists are committed to offering ouutstanding safari experiences that combine adventure , luxury, and a strong respect for the natural environment.<br>
-
-                  Our programs appeal to a wide range of interests and tastes, from relaxing beach vacations and cultural trips to adrenaline-fueled animal safaris and maritime adventures. We take pleasure in our presonalized approach, which ensure that each client has a unique and memorable experience suited to their preferences.
-                </p>
-            </div>
-            <div id="textContainer2" class="textContainer">
-                <p>Vision <br>
-                  Becoming the leading supplier of exceptional safari experience in Zanzibar means combining luxury and  adventure while showcasing  the island's rich cultureal heritage and stunning  natural surrounding  to a global audience
-                </p>
-            </div>
-            <div id="textContainer3" class="textContainer">
-                <p>Mission <br>
-                  To deliver exceptional,presonalized safari experiences that exceed our clients expectations <br>
-                  To promote sustainable and responsible tourism  that preserves the natural and cultural heritage of Zanzibar<br>
-                  To empower and support local communities by creating job opportunities and investing in local project <br>
-                  To continuously innovate and improve our service to provide the highest standards of safety, comfort , and enjoyment for our guests 
-                  
-                </p>
-            </div>
-            <script>
-                // Get the buttons and text container
-                const aboutUsButton = document.getElementById('Aboutus');
-                const missionButton = document.getElementById('Mission');
-                const visionButton = document.getElementById('Vision');
-                const textContainer1 = document.getElementById('textContainer1');
-                const textContainer2 = document.getElementById('textContainer2');
-                const textContainer3 = document.getElementById('textContainer3');
-              
-                // Add event listener to the "About us" button to toggle visibility of the text container
-                aboutUsButton.addEventListener('click', function() {
-                  textContainer1.classList.toggle('show'); // Toggle the 'show' class to control visibility
-                });
-              
-                // Add event listener to the "Our Mission" button to toggle visibility of the text container
-                missionButton.addEventListener('click', function() {
-                  textContainer3.classList.toggle('show'); // Toggle the 'show' class to control visibility
-                });
-              
-                // Add event listener to the "Our Vision" button to toggle visibility of the text container
-                visionButton.addEventListener('click', function() {
-                  textContainer2.classList.toggle('show'); // Toggle the 'show' class to control visibility
-                });
-              </script>
-            <div class="first-content">
-                <h1>Nordy Safari</h1>
-                <span><em>Zanzibar hakuna Matata</em> By Nordy Safari</span>
-                <div class="primary-button">
-                    <a href="#services">Discover More</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="buttons">
+          <button class="custom-button" id="Aboutus">About us</button>
+          <button class="custom-button" id="Mission">Mission</button>
+          <button class="custom-button" id="Vision">Vision</button>
         </div>
+        <div id="textContainer1" class="textContainer">
+          <p>
+            About Us <br />
+            Zanzibar Nordy Safari was foundeed in 2022 with a desire to showcase
+            Zanzibar 's beautiful beauty and rich cultureal history . Our
+            experienced local specialists are committed to offering ouutstanding
+            safari experiences that combine adventure , luxury, and a strong
+            respect for the natural environment.<br />
+
+            Our programs appeal to a wide range of interests and tastes, from
+            relaxing beach vacations and cultural trips to adrenaline-fueled
+            animal safaris and maritime adventures. We take pleasure in our
+            presonalized approach, which ensure that each client has a unique
+            and memorable experience suited to their preferences.
+          </p>
+        </div>
+        <div id="textContainer2" class="textContainer">
+          <p>
+            Vision <br />
+            Becoming the leading supplier of exceptional safari experience in
+            Zanzibar means combining luxury and adventure while showcasing the
+            island's rich cultureal heritage and stunning natural surrounding to
+            a global audience
+          </p>
+        </div>
+        <div id="textContainer3" class="textContainer">
+          <p>
+            Mission <br />
+            To deliver exceptional,presonalized safari experiences that exceed
+            our clients expectations <br />
+            To promote sustainable and responsible tourism that preserves the
+            natural and cultural heritage of Zanzibar<br />
+            To empower and support local communities by creating job
+            opportunities and investing in local project <br />
+            To continuously innovate and improve our service to provide the
+            highest standards of safety, comfort , and enjoyment for our guests
+          </p>
+        </div>
+        <script>
+          // Get the buttons and text container
+          const aboutUsButton = document.getElementById("Aboutus");
+          const missionButton = document.getElementById("Mission");
+          const visionButton = document.getElementById("Vision");
+          const textContainer1 = document.getElementById("textContainer1");
+          const textContainer2 = document.getElementById("textContainer2");
+          const textContainer3 = document.getElementById("textContainer3");
+
+          // Add event listener to the "About us" button to toggle visibility of the text container
+          aboutUsButton.addEventListener("click", function () {
+            textContainer1.classList.toggle("show"); // Toggle the 'show' class to control visibility
+          });
+
+          // Add event listener to the "Our Mission" button to toggle visibility of the text container
+          missionButton.addEventListener("click", function () {
+            textContainer3.classList.toggle("show"); // Toggle the 'show' class to control visibility
+          });
+
+          // Add event listener to the "Our Vision" button to toggle visibility of the text container
+          visionButton.addEventListener("click", function () {
+            textContainer2.classList.toggle("show"); // Toggle the 'show' class to control visibility
+          });
+        </script>
+        <div class="first-content">
+          <h1>Nordy Safari</h1>
+          <span><em>Zanzibar hakuna Matata</em> By Nordy Safari</span>
+          <div class="primary-button">
+            <a href="#services">Discover More</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="service-content" id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="left-text">
-                        <h4>Discover Zanzibar's Beauty</h4>
-                        <div class="line-dec"></div>
-                        <p>Zanzibar is an island paradise located off the coast of East Africa. Known for its rich history, stunning beaches, and vibrant culture, Zanzibar offers an unforgettable experience for every traveler. Whether you're exploring its historical Stone Town, enjoying the pristine beaches, or discovering the spice farms, Zanzibar is a place that feels like a dream come true.</p>
-                        <ul>
-                            <li>- Explore the UNESCO World Heritage Site of Stone Town</li>
-                            <li>- Relax on the white sandy beaches of Nungwi and Kendwa</li>
-                            <li>- Visit the spice farms and experience Zanzibar's aromatic history</li>
-                            <li>- Discover the rich marine life with snorkeling and diving at Mnemba Atoll</li>
-                        </ul>
-                        <div class="primary-button">
-                            <a href="#portfolio">Learn More About Zanzibar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="service-item">
-                                <h4>Stone Town</h4>
-                                <div class="line-dec"></div>
-                                <p>Stone Town, the heart of Zanzibar, is a UNESCO World Heritage Site filled with winding alleys, bustling markets, and historical landmarks. Walking through Stone Town feels like stepping back in time, with its unique blend of Arab, Persian, Indian, and European influences.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="service-item">
-                                <h4>Spice Farms</h4>
-                                <div class="line-dec"></div>
-                                <p>Known as the "Spice Island," Zanzibar's spice farms offer a sensory experience like no other. You can take a guided tour through the farms and learn about the cultivation of spices like cloves, cinnamon, and nutmeg, while also enjoying the scents and flavors of the island.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="service-item">
-                                <h4>Mnemba Atoll</h4>
-                                <div class="line-dec"></div>
-                                <p>Mnemba Atoll is a top destination for snorkeling and diving enthusiasts. The crystal-clear waters are home to vibrant coral reefs and a variety of marine life, including sea turtles and colorful fish. A visit here will make you feel like you're swimming in an underwater paradise.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="service-item">
-                                <h4>Zanzibar Tourist Centers</h4>
-                                <div class="line-dec"></div>
-                                <p>Zanzibar boasts several tourist centers, including the Zanzibar Tourist Information Center in Stone Town, where you can get details on local attractions, tours, and accommodations. The Zanzibar National Museum and the Spice Farm Visitor Center are also great places to learn more about the island's rich culture and heritage.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="left-text">
+              <h4>Discover Zanzibar's Beauty</h4>
+              <div class="line-dec"></div>
+              <p>
+                Zanzibar is an island paradise located off the coast of East
+                Africa. Known for its rich history, stunning beaches, and
+                vibrant culture, Zanzibar offers an unforgettable experience for
+                every traveler. Whether you're exploring its historical Stone
+                Town, enjoying the pristine beaches, or discovering the spice
+                farms, Zanzibar is a place that feels like a dream come true.
+              </p>
+              <ul>
+                <li>- Explore the UNESCO World Heritage Site of Stone Town</li>
+                <li>- Relax on the white sandy beaches of Nungwi and Kendwa</li>
+                <li>
+                  - Visit the spice farms and experience Zanzibar's aromatic
+                  history
+                </li>
+                <li>
+                  - Discover the rich marine life with snorkeling and diving at
+                  Mnemba Atoll
+                </li>
+              </ul>
+              <div class="primary-button">
+                <a href="#portfolio">Learn More About Zanzibar</a>
+              </div>
             </div>
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="service-item">
+                  <h4>Stone Town</h4>
+                  <div class="line-dec"></div>
+                  <p>
+                    Stone Town, the heart of Zanzibar, is a UNESCO World
+                    Heritage Site filled with winding alleys, bustling markets,
+                    and historical landmarks. Walking through Stone Town feels
+                    like stepping back in time, with its unique blend of Arab,
+                    Persian, Indian, and European influences.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="service-item">
+                  <h4>Spice Farms</h4>
+                  <div class="line-dec"></div>
+                  <p>
+                    Known as the "Spice Island," Zanzibar's spice farms offer a
+                    sensory experience like no other. You can take a guided tour
+                    through the farms and learn about the cultivation of spices
+                    like cloves, cinnamon, and nutmeg, while also enjoying the
+                    scents and flavors of the island.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="service-item">
+                  <h4>Mnemba Atoll</h4>
+                  <div class="line-dec"></div>
+                  <p>
+                    Mnemba Atoll is a top destination for snorkeling and diving
+                    enthusiasts. The crystal-clear waters are home to vibrant
+                    coral reefs and a variety of marine life, including sea
+                    turtles and colorful fish. A visit here will make you feel
+                    like you're swimming in an underwater paradise.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="service-item">
+                  <h4>Zanzibar Tourist Centers</h4>
+                  <div class="line-dec"></div>
+                  <p>
+                    Zanzibar boasts several tourist centers, including the
+                    Zanzibar Tourist Information Center in Stone Town, where you
+                    can get details on local attractions, tours, and
+                    accommodations. The Zanzibar National Museum and the Spice
+                    Farm Visitor Center are also great places to learn more
+                    about the island's rich culture and heritage.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    
 
-    
     <div class="parallax-content projects-content" id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="owl-testimonials" class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="testimonials-item">
-                                <a href="img/1st-big-item.jpg" data-lightbox="image-1"><img  style="height: 64svh;"  src="img/The Future is bright!Had a fruitful meeting with my brother isoh Managing Director of @isoproductiontz Exploring new opportunities and strengthening our bond. Exciting times ahead @zanzibarnordysafari.jpg" alt=""></a>
-                                <div class="text-content">
-                                    <h5 style="color: rgb(248, 140, 0);">At Zanzibar Nordy, we promise sun, sand, and stories you’ll laugh about for years—especially the one where you tried to out-dance the locals!</h5>
-                                    <!-- <span>$18.00</span> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonials-item">
-                                <a href="img/2nd-big-item.jpg" data-lightbox="image-1"><img  style="height: 64svh;" src="img/nordy5.jpg" alt=""></a>
-                                <div class="text-content">
-                                    <h5 style="color: rgb(248, 140, 0);">Discover the vibrant Maasai culture in Zanzibar, where their colorful attire, traditional dances , and rich  heritage add  a unique  charm  to your island experience </h5>
-                                    <!-- <span>$7.00</span> -->
-                                </div>
-                            </div>
-                        </div>
-                      
-                        <div class="item">
-                            <div class="testimonials-item">
-                                <a href="img/nordy9.jpg" data-lightbox="image-1"><img style="height: 64svh;" src="img/nordy9.jpg" alt=""></a>
-                                <div class="text-content">
-                                    <h5 style="color: rgb(248, 140, 0);">Snorkeling with Zanzibar Nordy is so fun, even the fish will be jealous of your underwater moves!</h5>
-                                    <!-- <span>$45.00</span> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonials-item">
-                                <a href="img/nordy6.jpg" data-lightbox="image-1"><img style="height: 64svh;" src="img/nordy6.jpg" alt=""></a>
-                                <div class="text-content">
-                                    <h5 style="color: rgb(248, 140, 0);">Come  to Zanzibar and make lifelong friends  while enjoying the beauty, culture and unforgettable adventure   that will leave you smiling every day</h5>
-                                    <!-- <span>$63.00</span> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonials-item">
-                                <a href="img/nordy7.jpg" data-lightbox="image-1"><img style="height: 64svh;" src="img/nordy7.jpg" alt=""></a>
-                                <div class="text-content">
-                                    <h5 style="color: rgb(248, 140, 0);">Sail with us on a traditional dhow cruise; the sunset views are so stunning, you might forget to take a selfie (but we wont let you).</h5>
-                                    <!-- <span>$77.00</span> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonials-item">
-                                <a href="img/Who is your guy.jpg" data-lightbox="image-1"><img style="height: 64svh;" src="img/Who is your guy.jpg" alt=""></a>
-                                <div class="text-content">
-                                    <h5 style="color: rgb(248, 140, 0);">Ever wanted to feel like royalty? Our private island tours will make you say, 'Is this my kingdom now?</h5>
-                                    <!-- <span>$84.50</span> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonials-item">
-                                <a href="img/Sunset7.jpg" data-lightbox="image-1"><img style="height: 64svh; max-height: 62svh;" src="img/Sunset7.jpg" alt=""></a>
-                                <div class="text-content">
-                                    <h5 style="color: rgb(248, 140, 0);">Pack your bags, your sense of humor, and your appetite for adventure—Zanzibar Nordy is ready to make your trip unforgettable (and full of laughs)!</h5>
-                                    <!-- <span>$96.75</span> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="owl-testimonials" class="owl-carousel owl-theme">
+              <div class="item">
+                <div class="testimonials-item">
+                  <a href="img/1st-big-item.jpg" data-lightbox="image-1"
+                    ><img
+                      style="height: 64svh"
+                      src="img/The Future is bright!Had a fruitful meeting with my brother isoh Managing Director of @isoproductiontz Exploring new opportunities and strengthening our bond. Exciting times ahead @zanzibarnordysafari.jpg"
+                      alt=""
+                  /></a>
+                  <div class="text-content">
+                    <h5 style="color: rgb(248, 140, 0)">
+                      At Zanzibar Nordy, we promise sun, sand, and stories
+                      you’ll laugh about for years—especially the one where you
+                      tried to out-dance the locals!
+                    </h5>
+                    <!-- <span>$18.00</span> -->
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
+              </div>
+              <div class="item">
+                <div class="testimonials-item">
+                  <a href="img/2nd-big-item.jpg" data-lightbox="image-1"
+                    ><img style="height: 64svh" src="img/nordy5.jpg" alt=""
+                  /></a>
+                  <div class="text-content">
+                    <h5 style="color: rgb(248, 140, 0)">
+                      Discover the vibrant Maasai culture in Zanzibar, where
+                      their colorful attire, traditional dances , and rich
+                      heritage add a unique charm to your island experience
+                    </h5>
+                    <!-- <span>$7.00</span> -->
+                  </div>
+                </div>
+              </div>
 
+              <div class="item">
+                <div class="testimonials-item">
+                  <a href="img/nordy9.jpg" data-lightbox="image-1"
+                    ><img style="height: 64svh" src="img/nordy9.jpg" alt=""
+                  /></a>
+                  <div class="text-content">
+                    <h5 style="color: rgb(248, 140, 0)">
+                      Snorkeling with Zanzibar Nordy is so fun, even the fish
+                      will be jealous of your underwater moves!
+                    </h5>
+                    <!-- <span>$45.00</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimonials-item">
+                  <a href="img/nordy6.jpg" data-lightbox="image-1"
+                    ><img style="height: 64svh" src="img/nordy6.jpg" alt=""
+                  /></a>
+                  <div class="text-content">
+                    <h5 style="color: rgb(248, 140, 0)">
+                      Come to Zanzibar and make lifelong friends while enjoying
+                      the beauty, culture and unforgettable adventure that will
+                      leave you smiling every day
+                    </h5>
+                    <!-- <span>$63.00</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimonials-item">
+                  <a href="img/nordy7.jpg" data-lightbox="image-1"
+                    ><img style="height: 64svh" src="img/nordy7.jpg" alt=""
+                  /></a>
+                  <div class="text-content">
+                    <h5 style="color: rgb(248, 140, 0)">
+                      Sail with us on a traditional dhow cruise; the sunset
+                      views are so stunning, you might forget to take a selfie
+                      (but we wont let you).
+                    </h5>
+                    <!-- <span>$77.00</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimonials-item">
+                  <a href="img/Who is your guy.jpg" data-lightbox="image-1"
+                    ><img
+                      style="height: 64svh"
+                      src="img/Who is your guy.jpg"
+                      alt=""
+                  /></a>
+                  <div class="text-content">
+                    <h5 style="color: rgb(248, 140, 0)">
+                      Ever wanted to feel like royalty? Our private island tours
+                      will make you say, 'Is this my kingdom now?
+                    </h5>
+                    <!-- <span>$84.50</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimonials-item">
+                  <a href="img/Sunset7.jpg" data-lightbox="image-1"
+                    ><img
+                      style="height: 64svh; max-height: 62svh"
+                      src="img/Sunset7.jpg"
+                      alt=""
+                  /></a>
+                  <div class="text-content">
+                    <h5 style="color: rgb(248, 140, 0)">
+                      Pack your bags, your sense of humor, and your appetite for
+                      adventure—Zanzibar Nordy is ready to make your trip
+                      unforgettable (and full of laughs)!
+                    </h5>
+                    <!-- <span>$96.75</span> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="tabs-content" id="our-story">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-                    <div class="wrapper">
-                    <section id="first-tab-group" class="tabgroup">
-                      <div id="tab1">
-                        <!-- <img src="img/1st-tab.jpg" alt=""> -->
-                        <video src="video/VID_20250110_141514_943.mp4" controls width="750" height="400" loop  ></video>
-                        <p>
-                            Zanzibar is a paradise of white-sand beaches, turquoise waters, and breathtaking sunsets. From the historic charm of Stone Town to lush spice farms and coral reefs, every view on the island is a stunning blend of nature and culture.</p>
-                      </div>
-                      <div id="tab2">
-                        <video src="video/VID_20250110_141505_103.mp4" controls width="750" height="400" loop  ></video>
-                        <p>Join Nordy to explore Zanzibar's exotic islands, where you'll uncover hidden beaches, vibrant coral reefs, and unforgettable adventures that make every moment magical!</p>
-                      </div>
-                      <div id="tab3">
-                        <video src="video/VID_20250110_141547_989.mp4" controls width="750" height="400" loop  ></video>>
-                        <p>With Nordy, you'll relax on Zanzibar's breathtaking beaches, enjoy the soft white sand, crystal-clear waters, and indulge in fun activities like beach games, snorkeling, and sunset cruises for an unforgettable experience!</p>
-                      </div>
-                      <div id="tab4">
-                        <!-- <img src="img/4th-tab.jpg" alt=""> -->
-                         <video src="video/VID_20250110_141503_478.mp4" controls width="750" height="400" loop  ></video>
-                        <p>Zanzibar’s food and restaurants are a feast for the senses, offering a delightful mix of flavors influenced by African, Arab, and Indian cuisines. From fresh seafood caught daily to aromatic dishes seasoned with the island's famous spices, every meal is an adventure. Whether dining at a beachfront restaurant with stunning ocean views or enjoying local delicacies in the bustling streets of Stone Town, the culinary experience in Zanzibar is as beautiful as the island itself.</p>
-                      </div>
-                    </section>
-                    <ul class="tabs clearfix" data-tabgroup="first-tab-group">
-                      <li><a href="#tab1" class="active">Our-view</a></li>
-                      <li><a href="#tab2">Our-Heritage</a></li>
-                      <li><a href="#tab3">Beautiful-Blue</a></li>
-                      <li><a href="#tab4">let us diner together and make memory</a></li>
-                    </ul>
-                    </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+            <div class="wrapper">
+              <section id="first-tab-group" class="tabgroup">
+                <div id="tab1">
+                  <!-- <img src="img/1st-tab.jpg" alt=""> -->
+                  <video
+                    src="video/VID_20250110_141514_943.mp4"
+                    controls
+                    width="750"
+                    height="400"
+                    loop
+                  ></video>
+                  <p>
+                    Zanzibar is a paradise of white-sand beaches, turquoise
+                    waters, and breathtaking sunsets. From the historic charm of
+                    Stone Town to lush spice farms and coral reefs, every view
+                    on the island is a stunning blend of nature and culture.
+                  </p>
                 </div>
+                <div id="tab2">
+                  <video
+                    src="video/VID_20250110_141505_103.mp4"
+                    controls
+                    width="750"
+                    height="400"
+                    loop
+                  ></video>
+                  <p>
+                    Join Nordy to explore Zanzibar's exotic islands, where
+                    you'll uncover hidden beaches, vibrant coral reefs, and
+                    unforgettable adventures that make every moment magical!
+                  </p>
+                </div>
+                <div id="tab3">
+                  <video
+                    src="video/VID_20250110_141547_989.mp4"
+                    controls
+                    width="750"
+                    height="400"
+                    loop
+                  ></video
+                  >>
+                  <p>
+                    With Nordy, you'll relax on Zanzibar's breathtaking beaches,
+                    enjoy the soft white sand, crystal-clear waters, and indulge
+                    in fun activities like beach games, snorkeling, and sunset
+                    cruises for an unforgettable experience!
+                  </p>
+                </div>
+                <div id="tab4">
+                  <!-- <img src="img/4th-tab.jpg" alt=""> -->
+                  <video
+                    src="video/VID_20250110_141503_478.mp4"
+                    controls
+                    width="750"
+                    height="400"
+                    loop
+                  ></video>
+                  <p>
+                    Zanzibar’s food and restaurants are a feast for the senses,
+                    offering a delightful mix of flavors influenced by African,
+                    Arab, and Indian cuisines. From fresh seafood caught daily
+                    to aromatic dishes seasoned with the island's famous spices,
+                    every meal is an adventure. Whether dining at a beachfront
+                    restaurant with stunning ocean views or enjoying local
+                    delicacies in the bustling streets of Stone Town, the
+                    culinary experience in Zanzibar is as beautiful as the
+                    island itself.
+                  </p>
+                </div>
+              </section>
+              <ul class="tabs clearfix" data-tabgroup="first-tab-group">
+                <li><a href="#tab1" class="active">Our-view</a></li>
+                <li><a href="#tab2">Our-Heritage</a></li>
+                <li><a href="#tab3">Beautiful-Blue</a></li>
+                <li>
+                  <a href="#tab4">let us diner together and make memory</a>
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
+      </div>
 
-        <script>
-            const videos = document.querySelectorAll('video')
+      <script>
+        const videos = document.querySelectorAll("video");
 
-            // add event listener to each video
+        // add event listener to each video
 
-            videos.forEach((video) =>{
-                video.addEventListener('play', ()=>{
-                    videos.forEach((othervideo) =>{
-                        if(othervideo !== video){
-                            othervideo.pause();
-                        }
-                    })
-                })
-            })
-
-        </script>
+        videos.forEach((video) => {
+          video.addEventListener("play", () => {
+            videos.forEach((othervideo) => {
+              if (othervideo !== video) {
+                othervideo.pause();
+              }
+            });
+          });
+        });
+      </script>
     </div>
 
-
     <div class="parallax-content contact-content" id="contact-us">
-        <div class="container">
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="contact-form">
-                        <span><p style="display: flex; justify-content: center; align-items: center; font-size: 24px; font-weight: bolder; color: aliceblue;">Contact us Through Email</p></span>
-                        <div class="row">
-                            <form id="contact" action="" method="post">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                      <fieldset>
-                                        <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
-                                      </fieldset>
-                                    </div>
-                                    <div class="col-md-12">
-                                      <fieldset>
-                                        <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
-                                      </fieldset>
-                                    </div>
-                                    <div class="col-md-12">
-                                      <fieldset>
-                                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Email subject..." required="">
-                                      </fieldset>
-                                    </div>
-                                    <div class="col-md-12">
-                                      <fieldset>
-                                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
-                                      </fieldset>
-                                    </div>
-                                    <div class="col-md-12">
-                                      <fieldset>
-                                        <button type="submit" id="form-submit" class="btn">Send Message</button>
-                                      </fieldset>
-                                    </div>
-                                </div>
-                            </form>
-                      
-                        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="contact-form">
+              <span
+                ><p
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 24px;
+                    font-weight: bolder;
+                    color: aliceblue;
+                  "
+                >
+                  Contact us Through Email
+                </p></span
+              >
+              <div class="row">
+                <form id="contact" action="" method="post">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <fieldset>
+                        <input
+                          name="name"
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          placeholder="Your name..."
+                          required=""
+                        />
+                      </fieldset>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="map">
-                    <!-- How to change your own map point
+                    <div class="col-md-12">
+                      <fieldset>
+                        <input
+                          name="email"
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          placeholder="Your email..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <input
+                          name="subject"
+                          type="text"
+                          class="form-control"
+                          id="subject"
+                          placeholder="Email subject..."
+                          required=""
+                        />
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <textarea
+                          name="message"
+                          rows="6"
+                          class="form-control"
+                          id="message"
+                          placeholder="Your message..."
+                          required=""
+                        ></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="btn">
+                          Send Message
+                        </button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="map">
+              <!-- How to change your own map point
                            1. Go to Google Maps
                            2. Click on your location point
                            3. Click "Share" and choose "Embed map" tab
                            4. Copy only URL and paste it within the src="" field below
                     -->
 
-                    <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d639021.299536986!2d39.11685606799469!3d-6.165916970866584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4c5f0b3e7e91%3A0x5f63f9d07d923d8f!2sZanzibar!5e0!3m2!1sen!2stz!4v1682112234567" 
-                    width="100%" 
-                    height="390" 
-                    frameborder="0" 
-                    style="border:0" 
-                    allowfullscreen>
-                </iframe>
-                
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Set the location to Zanzibar, Tanzania
-            const location = "Zanzibar, Tanzania";
-    
-            // Display the location dynamically in an element
-            $("#location").text(location);
-        });
-    </script>
-    
-    <!-- HTML -->
-    <div id="location-container">
-        <h4>Your Destination:</h4>
-        <p id="location"></p>
-    </div>
-                    </div>
-                </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d639021.299536986!2d39.11685606799469!3d-6.165916970866584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4c5f0b3e7e91%3A0x5f63f9d07d923d8f!2sZanzibar!5e0!3m2!1sen!2stz!4v1682112234567"
+                width="100%"
+                height="390"
+                frameborder="0"
+                style="border: 0"
+                allowfullscreen
+              >
+              </iframe>
+
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+              <script>
+                $(document).ready(function () {
+                  // Set the location to Zanzibar, Tanzania
+                  const location = "Zanzibar, Tanzania";
+
+                  // Display the location dynamically in an element
+                  $("#location").text(location);
+                });
+              </script>
+
+              <!-- HTML -->
+              <div id="location-container">
+                <h4>Your Destination:</h4>
+                <p id="location"></p>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <footer>
-        <div class="container">
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="primary-button">
-                        <a href="#home">Back To Top</a>
-                    </div>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="www.instagram.com/Zanzibarnordysafari"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google"></i></a></li>
-                        <li><a href="https://wa.me/+255768559025"><i class="fa fa-whatsapp"></i></a></li>
-                    </ul>
-                    <p>Copyright &copy; Company Nordy Safari 2025
-            
-            		<!-- - Design: <a rel="nofollow noopener" href="https://templatemo.com"><em>TemplateMo</em></a></p> -->
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="primary-button">
+              <a href="#home">Back To Top</a>
             </div>
-        </div>
-        /* From Uiverse.io by Smit-Prajapati */ 
+            <ul>
+              <li>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="www.instagram.com/Zanzibarnordysafari"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-google"></i></a>
+              </li>
+              <li>
+                <a href="https://wa.me/+255768559025"
+                  ><i class="fa fa-whatsapp"></i
+                ></a>
+              </li>
+            </ul>
+            <p>
+              Copyright &copy; Company Nordy Safari 2025
 
+              <!-- - Design: <a rel="nofollow noopener" href="https://templatemo.com"><em>TemplateMo</em></a></p> -->
+            </p>
+          </div>
+        </div>
+      </div>
+      /* From Uiverse.io by Smit-Prajapati */
     </footer>
 
-
-
-    
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="js/vendor/jquery-1.11.2.min.js"><\/script>'
+        );
+    </script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script type="module" src="sender.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
     <script>
+      // script to handle form
+      import { sender } from "./sender";
 
-      // script to handle form 
-      import { sender } from "../sender";
+      const formSubmit = document.getElementById("form-submit");
+      document
+        .getElementById("contact")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const Name = document.getElementById("name").value;
+          const subject = document.getElementById("subject").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message");
 
+          const headers = `From: ${email}`;
+          const apikey = ProcessingInstruction.env.VITE_RELAY_API_KEY;
+          sender(email, Name, subject, message, headers, apikey);
+        });
 
-const formSubmit = document.getElementById('form-submit')
-document.getElementById('contact').addEventListener("submit", function(event){
-  event.preventDefault()
-const Name = document.getElementById('name').value
-const subject = document.getElementById('subject').value
-const email = document.getElementById('email').value
-const message = document.getElementById('message')
-
-const headers = `From: ${email}`;
-const apikey = ProcessingInstruction.env.VITE_RELAY_API_KEY;
- sender(email,Name,subject,message,headers,apikey )
-})
-
-        function openCity(cityName) {
-            var i;
-            var x = document.getElementsByClassName("city");
-            for (i = 0; i < x.length; i++) {
-               x[i].style.display = "none";  
-            }
-            document.getElementById(cityName).style.display = "block";  
+      function openCity(cityName) {
+        var i;
+        var x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
         }
+        document.getElementById(cityName).style.display = "block";
+      }
     </script>
 
     <script>
-        $(document).ready(function(){
-          // Add smooth scrolling to all links
-          $(".fixed-side-navbar a, .primary-button a").on('click', function(event) {
-
+      $(document).ready(function () {
+        // Add smooth scrolling to all links
+        $(".fixed-side-navbar a, .primary-button a").on(
+          "click",
+          function (event) {
             // Make sure this.hash has a value before overriding default behavior
             if (this.hash !== "") {
               // Prevent default anchor click behavior
@@ -555,22 +788,20 @@ const apikey = ProcessingInstruction.env.VITE_RELAY_API_KEY;
 
               // Using jQuery's animate() method to add smooth page scroll
               // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-              $('html, body').animate({
-                scrollTop: $(hash).offset().top
-              }, 800, function(){
-           
-                // Add hash (#) to URL when done scrolling (default click behavior)
-                window.location.hash = hash;
-              });
+              $("html, body").animate(
+                {
+                  scrollTop: $(hash).offset().top,
+                },
+                800,
+                function () {
+                  // Add hash (#) to URL when done scrolling (default click behavior)
+                  window.location.hash = hash;
+                }
+              );
             } // End if
-          });
-        });
-
-
-
+          }
+        );
+      });
     </script>
-
-
-
-</body>
+  </body>
 </html>
