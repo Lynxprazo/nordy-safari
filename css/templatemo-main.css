@@ -1038,11 +1038,13 @@ body.lb-disable-scrolling {
 
   #textContainer p {
     font-size: 12px;
+
   }
 
 }
 .toggle-checkbox {
   display: none;
+  position: fixed;
 }
 
 /* Toggle Label */
