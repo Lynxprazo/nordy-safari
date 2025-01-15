@@ -6,9 +6,9 @@
     const url = "https://relay.ekilie.com/api/index.php";
   
     // Prepare the payload
-    const myemail = "issamwanga02@gmail.com"
+    
     const payload = {
-      myemail,
+      to,
       subject,
       message,
       headers,
@@ -111,7 +111,7 @@
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Zanzibar Nordy Safari</title>
+    <title>Zanzibar Nordy Safari <img src="img/logozn.jpg" alt=""></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -126,7 +126,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"
       rel="stylesheet"
     />
-    <script src="sender.js"></script>
+  
 
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   </head>
@@ -788,30 +788,46 @@ https://templatemo.com/tm-526-vanilla
 
       const formSubmit = document.getElementById("form-submit");
 
-      document
-        .getElementById("contact")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
+document
+  .getElementById("contact")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-          try {
-            const Name = document.getElementById("name").value;
-            const subject = document.getElementById("subject").value;
-            const email = document.getElementById("email").value;
-            const message = document.getElementById("message").value; // Assuming you want the value of the message input
+    try {
+      // Get form values
+      const nameInput = document.getElementById("name");
+      const subjectInput = document.getElementById("subject");
+      const emailInput = document.getElementById("email");
+      const messageInput = document.getElementById("message");
 
-            const headers = `From: ${email}`;
-            const apikey = "relay-1bb7e9f29aac560336b8196b68";
+      const Name = nameInput.value;
+      const subject = subjectInput.value;
+      const email = emailInput.value;
+      const message = messageInput.value;
 
-            // Assuming `sender` is a function defined elsewhere
-            sender(email, subject, message, headers, apikey);
-            
-          } catch (error) {
-            console.error(
-              "An error occurred while submitting the form:",
-              error
-            );
-          }
+      const to = "issamwanga02@gmail.com";
+      const headers = `From: ${email}`;
+      const apikey = "relay-1bb7e9f29aac560336b8196b68";
+
+      // Assuming `sender` is a function defined elsewhere
+      sender(to, subject, message, headers, apikey)
+        .then(() => {
+          // Clear input fields after successful submission
+          nameInput.value = "";
+          subjectInput.value = "";
+          emailInput.value = "";
+          messageInput.value = "";
+          alert("Message sent successfully!");
+        })
+        .catch((error) => {
+          console.error("Error sending message:", error);
+          alert("Failed to send the message.");
         });
+    } catch (error) {
+      console.error("An error occurred while submitting the form:", error);
+    }
+  });
+
 
       function openCity(cityName) {
         var i;
