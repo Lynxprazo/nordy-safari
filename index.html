@@ -31,7 +31,7 @@
           })
           .then((data) => {
             console.log("Message sent successfully:", data);
-            alert("Message sent successfully!");
+            
           })
           .catch((error) => {
             console.error("Error sending message:", error);
@@ -62,7 +62,7 @@
         z-index: 100;
         margin-top: 20px;
         width: 50%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0);
         color: white;
         padding: 20px;
         border-radius: 5px;
@@ -74,7 +74,7 @@
       .textContainer.show {
         opacity: 1; /* Fully visible */
         visibility: visible; /* Make it visible */
-        transition: opacity 0.5s ease, visibility 0s; /* Smooth fade-in effect */
+        transition: opacity 1.5s ease, visibility 0s; /* Smooth fade-in effect */
       }
 
       /* Media query for smaller screens */

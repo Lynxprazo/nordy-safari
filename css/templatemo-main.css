@@ -922,12 +922,13 @@ body.lb-disable-scrolling {
 }
 
 .buttons{
-  height: auto;
+  height:8vh;
   display: flex;
   justify-content: flex-start;
   gap: 12px;
-  transform: translateY(-100px);
-  position:fixed;
+  transform: translateY(-200px);
+  transform: translateX(50px);
+
 }
 /* Base button styles */
 .custom-button {
