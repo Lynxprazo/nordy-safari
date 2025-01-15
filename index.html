@@ -1,6 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+      function sender(to, subject, message, headers = "", apikey = "") {
+    const url = "https://relay.ekilie.com/api/index.php";
+  
+    // Prepare the payload
+    const myemail = "issamwanga02@gmail.com"
+    const payload = {
+      myemail,
+      subject,
+      message,
+      headers,
+      apikey,
+    };
+  
+    // Send POST request
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json(); // Parse JSON response
+      })
+      .then((data) => {
+        console.log("Message sent successfully:", data);
+        alert("Message sent successfully!");
+      })
+      .catch((error) => {
+        console.error("Error sending message:", error);
+        alert("Failed to send the message.");
+      });
+  }
+  
+    </script>
     <style>
       /* Default styling */
       .buttons {
@@ -746,21 +785,32 @@ https://templatemo.com/tm-526-vanilla
     <script src="js/main.js"></script>
     <script>
       // script to handle form
-    
 
       const formSubmit = document.getElementById("form-submit");
+
       document
         .getElementById("contact")
         .addEventListener("submit", function (event) {
           event.preventDefault();
-          const Name = document.getElementById("name").value;
-          const subject = document.getElementById("subject").value;
-          const email = document.getElementById("email").value;
-          const message = document.getElementById("message");
 
-          const headers = `From: ${email}`;
-          const apikey = "relay-1bb7e9f29aac560336b8196b68";
-          sender(email, Name, subject, message, headers, apikey);
+          try {
+            const Name = document.getElementById("name").value;
+            const subject = document.getElementById("subject").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value; // Assuming you want the value of the message input
+
+            const headers = `From: ${email}`;
+            const apikey = "relay-1bb7e9f29aac560336b8196b68";
+
+            // Assuming `sender` is a function defined elsewhere
+            sender(email, subject, message, headers, apikey);
+            
+          } catch (error) {
+            console.error(
+              "An error occurred while submitting the form:",
+              error
+            );
+          }
         });
 
       function openCity(cityName) {
