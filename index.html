@@ -87,6 +87,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"
       rel="stylesheet"
     />
+    <script src="sender.js"></script>
 
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   </head>
@@ -745,7 +746,7 @@ https://templatemo.com/tm-526-vanilla
     <script src="js/main.js"></script>
     <script>
       // script to handle form
-      import { sender } from "./sender";
+    
 
       const formSubmit = document.getElementById("form-submit");
       document
@@ -758,7 +759,7 @@ https://templatemo.com/tm-526-vanilla
           const message = document.getElementById("message");
 
           const headers = `From: ${email}`;
-          const apikey = ProcessingInstruction.env.VITE_RELAY_API_KEY;
+          const apikey = "relay-1bb7e9f29aac560336b8196b68";
           sender(email, Name, subject, message, headers, apikey);
         });
 
