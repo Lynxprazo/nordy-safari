@@ -1041,7 +1041,26 @@ body.lb-disable-scrolling {
   }
 
 }
+.toggle-checkbox {
+  display: none;
+}
 
+/* Toggle Label */
+.toggle-label {
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+/* Show/Hide the Buttons */
+.toggle-checkbox:checked + .buttons {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
 /* Initially hidden */
 
 

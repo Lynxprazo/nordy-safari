@@ -3,42 +3,41 @@
   <head>
     <script>
       function sender(to, subject, message, headers = "", apikey = "") {
-    const url = "https://relay.ekilie.com/api/index.php";
-  
-    // Prepare the payload
-    
-    const payload = {
-      to,
-      subject,
-      message,
-      headers,
-      apikey,
-    };
-  
-    // Send POST request
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json(); // Parse JSON response
-      })
-      .then((data) => {
-        console.log("Message sent successfully:", data);
-        alert("Message sent successfully!");
-      })
-      .catch((error) => {
-        console.error("Error sending message:", error);
-        alert("Failed to send the message.");
-      });
-  }
-  
+        const url = "https://relay.ekilie.com/api/index.php";
+
+        // Prepare the payload
+
+        const payload = {
+          to,
+          subject,
+          message,
+          headers,
+          apikey,
+        };
+
+        // Send POST request
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json(); // Parse JSON response
+          })
+          .then((data) => {
+            console.log("Message sent successfully:", data);
+            alert("Message sent successfully!");
+          })
+          .catch((error) => {
+            console.error("Error sending message:", error);
+            alert("Failed to send the message.");
+          });
+      }
     </script>
     <style>
       /* Default styling */
@@ -115,7 +114,7 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png" /> -->
-    <link rel="icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="icon" sizes="180x180" href="./img/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/fontAwesome.css" />
     <link rel="stylesheet" href="css/hero-slider.css" />
@@ -126,7 +125,6 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"
       rel="stylesheet"
     />
-  
 
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   </head>
@@ -213,6 +211,8 @@ https://templatemo.com/tm-526-vanilla
 
     <div class="parallax-content baner-content" id="home">
       <div class="container">
+        <input type="checkbox" id="toggle" class="toggle-checkbox" />
+        <label for="toggle" class="toggle-label">☰</label>
         <div class="buttons">
           <button class="custom-button" id="Aboutus">About us</button>
           <button class="custom-button" id="Mission">Mission</button>
@@ -257,6 +257,18 @@ https://templatemo.com/tm-526-vanilla
           </p>
         </div>
         <script>
+          // handle show bar
+          // If you want to add more interactivity, you can add a click event listener
+          const toggleCheckbox = document.getElementById("toggle");
+          toggleCheckbox.addEventListener("change", function () {
+            const buttons = document.querySelector(".buttons");
+            if (this.checked) {
+              buttons.style.opacity = "0"; // Hide buttons with animation
+            } else {
+              buttons.style.opacity = "1"; // Show buttons with animation
+            }
+          });
+
           // Get the buttons and text container
           const aboutUsButton = document.getElementById("Aboutus");
           const missionButton = document.getElementById("Mission");
@@ -746,7 +758,9 @@ https://templatemo.com/tm-526-vanilla
                 <a href="#"><i class="fa fa-facebook"></i></a>
               </li> -->
               <li>
-                <a href="mailto:Zanzibarnordy@gmail.com"><i class="fa fa-google"></i></a>
+                <a href="mailto:Zanzibarnordy@gmail.com"
+                  ><i class="fa fa-google"></i
+                ></a>
               </li>
               <li>
                 <a href="https://www.instagram.com/zanzibarnordysafari"
@@ -788,46 +802,48 @@ https://templatemo.com/tm-526-vanilla
 
       const formSubmit = document.getElementById("form-submit");
 
-document
-  .getElementById("contact")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
+      document
+        .getElementById("contact")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
 
-    try {
-      // Get form values
-      const nameInput = document.getElementById("name");
-      const subjectInput = document.getElementById("subject");
-      const emailInput = document.getElementById("email");
-      const messageInput = document.getElementById("message");
+          try {
+            // Get form values
+            const nameInput = document.getElementById("name");
+            const subjectInput = document.getElementById("subject");
+            const emailInput = document.getElementById("email");
+            const messageInput = document.getElementById("message");
 
-      const Name = nameInput.value;
-      const subject = subjectInput.value;
-      const email = emailInput.value;
-      const message = messageInput.value;
+            const Name = nameInput.value;
+            const subject = subjectInput.value;
+            const email = emailInput.value;
+            const message = messageInput.value;
 
-      const to = "Zanzibarnordy@gmail.com";
-      const headers = `From: ${email}`;
-      const apikey = "relay-1bb7e9f29aac560336b8196b68";
+            const to = "Zanzibarnordy@gmail.com";
+            const headers = `From: ${email}`;
+            const apikey = "relay-1bb7e9f29aac560336b8196b68";
 
-      // Assuming `sender` is a function defined elsewhere
-      sender(to, subject, message, headers, apikey)
-        .then(() => {
-          // Clear input fields after successful submission
-          nameInput.value = "";
-          subjectInput.value = "";
-          emailInput.value = "";
-          messageInput.value = "";
-          alert("Message sent successfully!");
-        })
-        .catch((error) => {
-          console.error("Error sending message:", error);
-          alert("Failed to send the message.");
+            // Assuming `sender` is a function defined elsewhere
+            sender(to, subject, message, headers, apikey)
+              .then(() => {
+                // Clear input fields after successful submission
+                nameInput.value = "";
+                subjectInput.value = "";
+                emailInput.value = "";
+                messageInput.value = "";
+                alert("Message sent successfully!");
+              })
+              .catch((error) => {
+                console.error("Error sending message:", error);
+                alert("Failed to send the message.");
+              });
+          } catch (error) {
+            console.error(
+              "An error occurred while submitting the form:",
+              error
+            );
+          }
         });
-    } catch (error) {
-      console.error("An error occurred while submitting the form:", error);
-    }
-  });
-
 
       function openCity(cityName) {
         var i;
