@@ -920,16 +920,17 @@ body.lb-disable-scrolling {
   bottom: 20px;
   right: 20px;
 }
-
+/* 
 .buttons{
   height:8vh;
   display: flex;
   justify-content: flex-start;
   gap: 12px;
-  transform: translateY(-200px);
+  margin-top: 0px;
+  transform: translateY(200px);
   transform: translateX(50px);
 
-}
+} */
 /* Base button styles */
 .custom-button {
   position: relative;
@@ -1056,6 +1057,7 @@ body.lb-disable-scrolling {
   top: 10px;
   left: 10px;
   z-index: 1;
+  color: white;
 }
 
 /* Show/Hide the Buttons */
